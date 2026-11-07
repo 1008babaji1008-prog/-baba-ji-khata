@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="hi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kharcha Kahan Gaya</title>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);--bg:#f2f4f8;--cd:#fff;--tx:#17213b;--mu:#68718a;--ac:#1d2b53;--ac2:#f0a81c;--on:#fff;--bd:#dde2ec;--up:#c0392b;--dn:#1c8a5a;--ch:#fff4d9;color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10152a;--cd:#1a2140;--tx:#eef1fa;--mu:#9aa4c4;--ac:#f0a81c;--ac2:#f0a81c;--on:#10152a;--bd:#2b345c;--up:#ff7b6b;--dn:#4fd196;--ch:#2e2a1c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#10152a;--cd:#1a2140;--tx:#eef1fa;--mu:#9aa4c4;--ac:#f0a81c;--ac2:#f0a81c;--on:#10152a;--bd:#2b345c;--up:#ff7b6b;--dn:#4fd196;--ch:#2e2a1c;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.4 Mukta,system-ui,sans-serif;padding:14px 14px calc(84px + env(safe-area-inset-bottom,0px));max-width:560px;margin:0 auto}
+h1{font-size:26px;font-weight:800;margin:4px 0 12px;letter-spacing:-.3px}
+h3{margin:20px 0 8px;font-size:17px}
+label{display:block;font-size:13px;color:var(--mu);margin:12px 0 4px;font-weight:600}
+input,select{width:100%;font:inherit;padding:11px 12px;border:1.5px solid var(--bd);border-radius:10px;background:var(--cd);color:var(--tx)}
+input:focus,select:focus,button:focus-visible{outline:2px solid var(--ac2);outline-offset:1px}
+.card{background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:14px;margin:10px 0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.cat{border:1.5px solid var(--bd);background:var(--cd);color:var(--tx);border-radius:12px;padding:9px 4px;font:600 12.5px/1.2 Mukta,sans-serif;cursor:pointer;text-align:center}
+.cat span{display:block;font-size:22px;margin-bottom:2px}
+.cat.on{border-color:var(--ac);background:var(--ch);box-shadow:0 0 0 1.5px var(--ac)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{border:1.5px solid var(--bd);background:var(--cd);color:var(--tx);border-radius:99px;padding:5px 12px;font:600 14px Mukta,sans-serif;cursor:pointer}
+.chip.on{background:var(--ac);color:var(--on);border-color:var(--ac)}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.r3{display:grid;grid-template-columns:1.2fr 1fr;gap:6px}
+.big{width:100%;margin-top:16px;padding:14px;border:0;border-radius:12px;background:var(--ac);color:var(--on);font:800 18px Mukta,sans-serif;cursor:pointer}
+.tot{display:flex;justify-content:space-between;align-items:center;background:var(--ch);border-color:var(--ac2)}
+.tot b{font-size:24px}
+.en{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--bd)}
+.en:last-child{border:0}
+.em{font-size:22px;width:30px;text-align:center}
+.mid{flex:1;min-width:0}.mid b{display:block;font-weight:600;overflow-wrap:anywhere}
+small{color:var(--mu);font-size:12.5px}
+.am{font-weight:800}.am.ln{color:var(--mu)}
+.del{border:0;background:none;color:var(--mu);font:600 14px Mukta,sans-serif;padding:6px;cursor:pointer}
+.del.sure{color:var(--up)}
+.dh{display:flex;justify-content:space-between;margin:14px 0 2px;font-weight:800;font-size:14px}
+.rg{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
+.rg .chip{white-space:nowrap}
+.hero{background:var(--ac);color:var(--on);border-radius:16px;padding:16px;margin:12px 0}
+.hero .n{font-size:38px;font-weight:800;line-height:1.1}
+.hero small{color:inherit;opacity:.8}
+.up{color:var(--up);font-weight:700}.dn{color:var(--dn);font-weight:700}
+.hero .up,.hero .dn{color:inherit;text-decoration:underline}
+.bar{height:8px;border-radius:5px;background:var(--bd);margin-top:5px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac2)}
+.cr{padding:9px 0;border-bottom:1px solid var(--bd);cursor:pointer}
+.cr .t{display:flex;justify-content:space-between;gap:8px}
+.sub{background:var(--bg);border-radius:10px;padding:6px 10px;margin-top:8px}
+.sub div{display:flex;justify-content:space-between;padding:4px 0;font-size:14px}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--cd);border-top:1px solid var(--bd);padding:6px 10px calc(6px + env(safe-area-inset-bottom,0px));gap:8px;max-width:560px;margin:0 auto}
+nav button{flex:1;border:0;background:none;color:var(--mu);font:700 15px Mukta,sans-serif;padding:8px;border-radius:10px;cursor:pointer}
+nav button.on{background:var(--ch);color:var(--tx)}
+#ts{position:fixed;left:50%;bottom:150px;transform:translateX(-50%);background:var(--ac);color:var(--on);padding:9px 18px;border-radius:99px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .2s}
+#ts.s{opacity:1}
+.qk{display:grid;grid-template-columns:1fr 1fr;gap:8px}.qb{display:flex;align-items:center;border:1.5px solid var(--ac2);background:var(--ch);border-radius:12px}.qa{flex:1;border:0;background:none;color:var(--tx);font:700 16px Mukta,sans-serif;padding:10px 6px 10px 12px;text-align:left;cursor:pointer}.qa small{display:block;font-weight:400}.qe{border:0;background:none;color:var(--mu);font-size:17px;padding:10px;cursor:pointer}
+#sv{position:sticky;bottom:calc(62px + env(safe-area-inset-bottom,0px));z-index:5;box-shadow:0 4px 16px rgba(0,0,0,.3)}
+textarea{width:100%;font:13px/1.4 monospace;padding:8px;border:1.5px solid var(--bd);border-radius:10px;background:var(--cd);color:var(--tx)}
+.mid{cursor:pointer}
+.hid{display:none}
+.emp{color:var(--mu);text-align:center;padding:14px}
+</style></head><body>
+<h1>Kharcha Kahan Gaya 💸</h1>
+
+<div id="v1">
+ <div class="card tot"><span>Is tareekh ka kharcha</span><b id="tdy">₹0</b></div>
+ <div id="bg"></div>
+ <div id="eb" class="card" style="display:none;justify-content:space-between;align-items:center"><span>✏️ Entry badal rahe ho</span><button class="del" id="ec">Rehne do</button></div>
+ <label>Tareekh</label><input type="date" id="dt">
+ <h3 style="margin:14px 0 8px">⚡ Jaldi likho (ek dabao)</h3><div class="qk" id="qk"></div>
+ <label>Kis cheez par kharcha?</label><div class="grid" id="cg"></div>
+ <div class="chips" id="ch"></div>
+ <label>Cheez ka naam</label><input id="it" placeholder="jaise: pyaz, tel, chai" autocomplete="off">
+ <div class="r2">
+  <div><label>Paise (₹)</label><input id="am" type="number" inputmode="decimal" placeholder="0"></div>
+  <div id="qw"><label>Kitna laaye</label><div class="r3"><input id="qt" type="number" inputmode="decimal" placeholder="0"><select id="un"><option>kg</option><option>gram</option><option>litre</option><option>piece</option><option>dozen</option><option>packet</option></select></div></div>
+ </div>
+ <label id="pl">Note (optional)</label><input id="pn" autocomplete="off">
+ <label style="display:flex;gap:8px;align-items:center;font-size:14px"><input type="checkbox" id="fv" style="width:auto"> Ye cheez Jaldi list mein jodo</label>
+ <label style="display:flex;gap:8px;align-items:center;font-size:14px"><input type="checkbox" id="fvv" style="width:auto"> Iska rate roz badalta hai (paise har baar poochho)</label>
+ <button class="big" id="sv">Save karo</button>
+ <h3>Is tareekh ki entries <small>(badalne ke liye entry dabao)</small></h3><div class="card" id="tl"></div>
+</div>
+
+<div id="v2" class="hid"></div>
+<div id="v3" class="hid"></div>
+<div id="ov" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:20;padding:20px"><div class="card" style="margin-top:40px"><b id="ovt"></b><textarea id="bx" rows="9"></textarea><button class="big" id="ovc">Band karo</button></div></div>
+<div id="ts"></div>
+<nav><button data-t="1" class="on">✏️ Likho</button><button data-t="2">📊 Report</button><button data-t="3">⚙️ Aur</button></nav>
+
+<script>
+const C=[
+{id:'chai',n:'Chai-Nashta',e:'☕',it:['Chai','Nashta','Biscuit','Samosa','Jalebi']},
+{id:'bahar',n:'Bahar ka khana-peena',e:'🍛',it:['Khana','Thali','Pani-puri','Cold drink','Juice','Ice cream']},
+{id:'doodh',n:'Doodh',e:'🥛',q:'litre',it:['Doodh','Dahi','Chaach','Ghee']},
+{id:'nasha',n:'Gutka-Rajshree',e:'🚬',it:['Rajshree','Gutka','Bidi','Cigarette']},
+{id:'sabzi',n:'Sabzi',e:'🥔',q:'kg',it:['Pyaz','Aloo','Tamatar','Mirchi','Govi','Bhindi','Lauki','Palak','Dhaniya','Adrak-Lahsun']},
+{id:'anda',n:'Anda-Paneer',e:'🥚',q:'piece',it:['Anda','Paneer','Chicken','Machhli']},
+{id:'kirana',n:'Kirana',e:'🛒',q:'kg',it:['Chaval','Atta','Tel','Dal','Cheeni','Namak','Masale','Chai patti','Sabun']},
+{id:'petrol',n:'Petrol-Gas',e:'⛽',q:'litre',it:['Petrol','Diesel','Gas cylinder']},
+{id:'safar',n:'Aana-Jana',e:'🚌',it:['Bus','Auto','Train','Taxi','Metro']},
+{id:'kiraya',n:'Kiraya-Bill',e:'🏠',it:['Ghar ka kiraya','Bijli bill','Pani bill','Recharge','Internet']},
+{id:'dawai',n:'Dawai',e:'💊',it:['Dawai','Doctor','Jaanch']},
+{id:'ghumna',n:'Bazar-Ghumna',e:'🛍️',it:['Kapde','Ghumna','Movie','Gift','Mela']},
+{id:'diya',n:'Udhaar Diya',e:'📤',loan:1,it:['Diya','Wapas mila']},
+{id:'liya',n:'Udhaar Liya',e:'📥',loan:1,it:['Liya','Wapas kiya']},
+{id:'aur',n:'Aur kharcha',e:'📝',it:[]},
+{id:'aay',n:'Aay (kamai)',e:'💰',inc:1,it:['Salary','Mazdoori','Bikri','Udhaar wapas','Aur aay']}];
+const CM={};C.forEach(c=>CM[c.id]=c);
+const $=s=>document.querySelector(s);
+const pad=n=>String(n).padStart(2,'0');
+const ymd=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const dOff=k=>{const d=new Date();d.setDate(d.getDate()+k);return ymd(d)};
+const m=x=>'₹'+Math.round(x).toLocaleString('en-IN');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fd=s=>s.slice(8)+'/'+s.slice(5,7);
+let E=[];try{E=JSON.parse(localStorage.getItem('kk1')||'[]')}catch(e){}
+const save=()=>{try{localStorage.setItem('kk1',JSON.stringify(E))}catch(e){}};
+let cat='chai',R='7',FD=dOff(-6),TD=dOff(0),OPEN=null;
+function toast(t){const e=$('#ts');e.textContent=t;e.classList.add('s');setTimeout(()=>e.classList.remove('s'),1600)}
+
+function ent(e,showDate){const c=CM[e.c];
+ const meta=[e.q?e.q+' '+e.u:'',e.p?esc(e.p):'',c.n,showDate?fd(e.d):''].filter(Boolean).join(' · ');
+ return `<div class="en" data-id="${e.id}"><span class="em">${c.e}</span><div class="mid"><b>${esc(e.i)}</b><small>${meta}</small></div><span class="am ${c.loan?'ln':c.inc?'dn':''}">${m(e.a)}</span><button class="del" data-id="${e.id}" aria-label="Hatao">✕</button></div>`}
+
+function pickCat(id){cat=id;const c=CM[id];
+ document.querySelectorAll('.cat').forEach(b=>b.classList.toggle('on',b.dataset.c===id));
+ $('#ch').innerHTML=c.it.map(x=>`<button class="chip" data-i="${x}">${x}</button>`).join('');
+ $('#qw').classList.toggle('hid',!c.q);
+ if(c.q)$('#un').value=c.q;
+ $('#pl').textContent=c.loan?'Kisko diya / kisse liya (naam)':'Note (optional)';
+}
+function listToday(){const d=$('#dt').value;const l=E.filter(e=>e.d===d).sort((a,b)=>b.id-a.id);
+ $('#tdy').textContent=m(l.filter(X).reduce((s,e)=>s+e.a,0));drawB();
+ $('#tl').innerHTML=l.length?l.map(e=>ent(e)).join(''):'<div class="emp">Abhi koi entry nahi. Upar se likhna shuru karo.</div>'}
+
+$('#cg').innerHTML=C.map(c=>`<button class="cat" data-c="${c.id}"><span>${c.e}</span>${c.n}</button>`).join('');
+$('#dt').value=dOff(0);
+$('#dt').onchange=listToday;
+$('#cg').onclick=e=>{const b=e.target.closest('.cat');if(b)pickCat(b.dataset.c)};
+$('#ch').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;
+ document.querySelectorAll('#ch .chip').forEach(x=>x.classList.toggle('on',x===b));
+ $('#it').value=b.dataset.i;$('#am').focus()};
+$('#sv').onclick=()=>{const a=parseFloat($('#am').value);
+ if(!(a>0)){toast('Pehle paise likho');$('#am').focus();return}
+ const c=CM[cat],q=parseFloat($('#qt').value);
+ const ne={id:EID||Date.now(),d:$('#dt').value||dOff(0),c:cat,i:$('#it').value.trim()||c.n,a:a,q:c.q&&q>0?q:0,u:c.q&&q>0?$('#un').value:'',p:$('#pn').value.trim()};
+ if(EID){const j=E.findIndex(x=>x.id===EID);if(j>=0)E[j]=ne;else E.push(ne)}else E.push(ne);
+ const L=ne,ix=F.findIndex(f=>f.c===L.c&&f.i.toLowerCase()===L.i.toLowerCase());
+ const vv=$('#fvv').checked?1:0;
+ if(ix>=0){if($('#fv').checked)F[ix].v=vv;if(!F[ix].v){F[ix].a=L.a;F[ix].q=L.q;F[ix].u=L.u}}else if($('#fv').checked)F.push({c:L.c,i:L.i,a:vv?0:L.a,q:vv?0:L.q,u:L.u,v:vv});
+ $('#fv').checked=false;$('#fvv').checked=false;EID=null;$('#sv').textContent='Save karo';$('#eb').style.display='none';saveF();drawQ();save();['#am','#qt','#it','#pn'].forEach(s=>$(s).value='');
+ document.querySelectorAll('#ch .chip').forEach(x=>x.classList.remove('on'));
+ listToday();scrollTo({top:0,behavior:'smooth'});toast('Save ho gaya ✓')};
+
+document.addEventListener('click',e=>{const b=e.target.closest('.del');if(!b)return;
+ if(!b.classList.contains('sure')){b.classList.add('sure');b.textContent='Pakka?';setTimeout(()=>{b.classList.remove('sure');b.textContent='✕'},3000);return}
+ E=E.filter(x=>String(x.id)!==b.dataset.id);save();listToday();if(tab==2)rep()});
+
+let tab=1;
+document.querySelector('nav').onclick=e=>{const b=e.target.closest('button');if(!b)return;
+ tab=+b.dataset.t;document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));
+ $('#v1').classList.toggle('hid',tab!=1);$('#v2').classList.toggle('hid',tab!=2);
+ if(tab==2)rep();else listToday();scrollTo(0,0)};
+
+function rng(){const n=new Date(),y=n.getFullYear(),mo=n.getMonth();let f,t=dOff(0);
+ if(R=='aaj')f=t;else if(R=='7')f=dOff(-6);else if(R=='30')f=dOff(-29);
+ else if(R=='m')f=ymd(new Date(y,mo,1));
+ else if(R=='pm'){f=ymd(new Date(y,mo-1,1));t=ymd(new Date(y,mo,0))}
+ else{f=FD;t=TD;if(f>t)[f,t]=[t,f]}
+ const days=Math.round((new Date(t+'T00:00')-new Date(f+'T00:00'))/864e5)+1;return[f,t,days]}
+function cmp(c,p){if(!c&&!p)return'';if(!p)return'<span class="up">naya</span>';const d=c-p;
+ if(!d)return'<span>barabar</span>';return`<span class="${d>0?'up':'dn'}">${d>0?'↑ '+m(d)+' zyada':'↓ '+m(-d)+' kam'}</span>`}
+
+function rep(){
+ const[f,t,days]=rng();
+ const pe=new Date(f+'T00:00');pe.setDate(pe.getDate()-1);const pE=ymd(pe);pe.setDate(pe.getDate()-(days-1));const pS=ymd(pe);
+ const ex=E.filter(X);
+ const cur=ex.filter(e=>e.d>=f&&e.d<=t),prv=ex.filter(e=>e.d>=pS&&e.d<=pE);
+ const sum=a=>a.reduce((s,e)=>s+e.a,0),tot=sum(cur),ptot=sum(prv);
+ const inc=sum(E.filter(e=>CM[e.c].inc&&e.d>=f&&e.d<=t));
+ const by={},pb={};cur.forEach(e=>by[e.c]=(by[e.c]||0)+e.a);prv.forEach(e=>pb[e.c]=(pb[e.c]||0)+e.a);
+ const cats=Object.keys(by).sort((a,b)=>by[b]-by[a]);
+ RT='Kharcha report '+fd(f)+' se '+fd(t)+'\nKul kharcha: '+m(tot)+'\nRoz ka average: '+m(tot/days)+(inc?'\nAay: '+m(inc)+' | '+(inc>=tot?'Bacha ':'Ghata ')+m(Math.abs(inc-tot)):'')+'\n\n'+cats.map(k=>CM[k].e+' '+CM[k].n+': '+m(by[k])).join('\n');
+ const all=[...new Set([...Object.keys(by),...Object.keys(pb)])].map(k=>({k,d:(by[k]||0)-(pb[k]||0)}));
+ const up=all.filter(x=>x.d>0).sort((a,b)=>b.d-a.d)[0],dn=all.filter(x=>x.d<0).sort((a,b)=>a.d-b.d)[0];
+ let h=`<div class="rg">${[['aaj','Aaj'],['7','7 din'],['30','30 din'],['m','Is mahina'],['pm','Pichhla mahina'],['c','Tareekh chuno']].map(x=>`<button class="chip ${R==x[0]?'on':''}" data-r="${x[0]}">${x[1]}</button>`).join('')}</div>`;
+ if(R=='c')h+=`<div class="r2"><div><label>Se</label><input type="date" id="fd" value="${FD}"></div><div><label>Tak</label><input type="date" id="td" value="${TD}"></div></div>`;
+ h+=`<div class="hero"><small>${fd(f)} se ${fd(t)} tak, ${days} din</small><div class="n">${m(tot)}</div>
+ <small>Roz ka average ${m(tot/days)}</small><br>${inc?`<small>Aay ${m(inc)} · ${inc>=tot?'Bacha '+m(inc-tot):'Ghata '+m(tot-inc)}</small><br>`:''}<small>Pichhle ${days} din (${m(ptot)}) se: ${cmp(tot,ptot)||'koi data nahi'}</small></div><button class="chip" data-share="1">📤 Report bhejo / copy karo</button>`;
+ if(cats.length){
+  h+=`<div class="card"><div class="dh" style="margin-top:0"><span>Sabse zyada kharcha</span><span>${CM[cats[0]].e} ${CM[cats[0]].n}</span></div>`;
+  if(cats.length>1)h+=`<div class="dh"><span>Sabse kam kharcha</span><span>${CM[cats[cats.length-1]].e} ${CM[cats[cats.length-1]].n}</span></div>`;
+  if(up)h+=`<div class="dh"><span>Sabse zyada badha</span><span class="up">${CM[up.k].e} ${CM[up.k].n} +${m(up.d)}</span></div>`;
+  if(dn)h+=`<div class="dh"><span>Sabse zyada ghata</span><span class="dn">${CM[dn.k].e} ${CM[dn.k].n} −${m(-dn.d)}</span></div>`;
+  h+=`</div><h3>Kis cheez par kitna gaya</h3><div class="card">`;
+  cats.forEach(k=>{const c=CM[k];h+=`<div class="cr" data-o="${k}"><div class="t"><b>${c.e} ${c.n}</b><b>${m(by[k])}</b></div>
+   <div class="t"><small>${Math.round(by[k]/tot*100)}% · ${cmp(by[k],pb[k]||0)}</small><small>${OPEN==k?'▲':'▼ dekho'}</small></div><div class="bar"><i style="width:${by[k]/by[cats[0]]*100}%"></i></div>`;
+   if(OPEN==k){const g={};cur.filter(e=>e.c==k).forEach(e=>{const n=e.i.toLowerCase();const o=g[n]||(g[n]={n:e.i,a:0,c:0,q:{}});o.a+=e.a;o.c++;if(e.q)o.q[e.u]=(o.q[e.u]||0)+e.q});
+    h+='<div class="sub">'+Object.values(g).sort((a,b)=>b.a-a.a).map(o=>`<div><span>${esc(o.n)} <small>${o.c} baar${Object.keys(o.q).length?' · '+Object.entries(o.q).map(([u,v])=>+v.toFixed(2)+' '+u).join(', '):''}</small></span><b>${m(o.a)}</b></div>`).join('')+'</div>'}
+   h+='</div>'});
+  h+='</div>'}else h+='<div class="emp">Is samay mein koi kharcha nahi likha.</div>';
+ const ln={};E.filter(e=>CM[e.c].loan).forEach(e=>{const k=e.c+'|'+(e.p||'(naam nahi)');ln[k]=(ln[k]||0)+((e.i=='Wapas mila'||e.i=='Wapas kiya')?-e.a:e.a)});
+ const lr=Object.entries(ln).filter(x=>Math.abs(x[1])>0.5);
+ if(lr.length)h+=`<h3>Udhaar ka hisab (ab tak)</h3><div class="card">`+lr.map(([k,v])=>{const[c,p]=k.split('|');return`<div class="dh" style="margin:0;padding:6px 0"><span>${esc(p)} ${c=='diya'?'se lena hai':'ko dena hai'}</span><span class="${c=='diya'?'dn':'up'}">${m(Math.abs(v))}</span></div>`}).join('')+'</div>';
+ const l=E.filter(e=>e.d>=f&&e.d<=t).sort((a,b)=>b.d.localeCompare(a.d)||b.id-a.id).slice(0,200);
+ if(l.length){h+='<h3>Poori list</h3><div class="card">';let dd='';
+  l.forEach(e=>{if(e.d!=dd){dd=e.d;const s=sum(l.filter(x=>x.d==dd&&X(x)));h+=`<div class="dh"><span>${fd(dd)}</span><span>${m(s)}</span></div>`}h+=ent(e)});h+='</div>'}
+ $('#v2').innerHTML=h}
+
+$('#v2').addEventListener('click',e=>{
+ const r=e.target.closest('[data-r]');if(r){R=r.dataset.r;OPEN=null;rep();return}
+ const o=e.target.closest('[data-o]');if(o&&!e.target.closest('.del')){OPEN=OPEN==o.dataset.o?null:o.dataset.o;rep()}});
+$('#v2').addEventListener('change',e=>{if(e.target.id=='fd'){FD=e.target.value;rep()}if(e.target.id=='td'){TD=e.target.value;rep()}});
+
+let F=[];try{F=JSON.parse(localStorage.getItem('kk_f')||'null')||[]}catch(e){}
+if(!F.length)F=[{c:'nasha',i:'Rajshree',a:0,q:0,u:''},{c:'nasha',i:'Gutka',a:0,q:0,u:''},{c:'sabzi',i:'Sabzi',a:0,q:0,u:'',v:1},{c:'chai',i:'Chai',a:0,q:0,u:''}];
+F.forEach(f=>{if(f.v===undefined)f.v=f.c==='sabzi'?1:0});
+['Pyaz','Aloo','Tamatar'].forEach(n=>{if(!F.some(f=>f.c==='sabzi'&&f.i===n))F.push({c:'sabzi',i:n,a:0,q:0,u:'kg',v:1})});
+const saveF=()=>{try{localStorage.setItem('kk_f',JSON.stringify(F))}catch(e){}};
+function drawQ(){$('#qk').innerHTML=F.map((f,k)=>`<div class="qb"><button class="qa" data-k="${k}">${CM[f.c].e} ${esc(f.i)}<small>${f.v?'roz ka rate daalo':f.a?m(f.a)+(f.q?' · '+f.q+' '+f.u:''):'pehli baar paise daalo'}</small></button><button class="qe" data-e="${k}" aria-label="Badlo">✎</button></div>`).join('')}
+function loadF(k){const f=F[k];pickCat(f.c);$('#it').value=f.i;$('#am').value=f.v?'':f.a||'';$('#qt').value=f.v?'':f.q||'';if(f.u)$('#un').value=f.u;$('#fv').checked=true;$('#fvv').checked=!!f.v;$('#am').focus();$('#am').scrollIntoView({block:'center'})}
+$('#qk').onclick=e=>{const a=e.target.closest('.qa'),ed=e.target.closest('.qe');
+ if(ed){loadF(+ed.dataset.e);return}
+ if(!a)return;const f=F[+a.dataset.k];
+ if(!f.a||f.v){loadF(+a.dataset.k);toast(f.v?'Aaj ka rate likho, Enter dabao':'Paise likho, phir Save');return}
+ E.push({id:Date.now(),d:$('#dt').value||dOff(0),c:f.c,i:f.i,a:f.a,q:f.q||0,u:f.u||'',p:''});save();listToday();toast(f.i+' '+m(f.a)+' likh diya ✓')};
+let EID=null,RT='',B={t:0,c:{}};
+try{const b=JSON.parse(localStorage.getItem('kk_b')||'{}');B.t=b.t||0;B.c=b.c||{}}catch(e){}
+const saveB=()=>{try{localStorage.setItem('kk_b',JSON.stringify(B))}catch(e){}};
+const X=e=>!CM[e.c].loan&&!CM[e.c].inc;
+function mspent(){const n=new Date(),f=ymd(new Date(n.getFullYear(),n.getMonth(),1)),o={t:0};E.filter(e=>X(e)&&e.d>=f).forEach(e=>{o.t+=e.a;o[e.c]=(o[e.c]||0)+e.a});return o}
+function drawB(){const s=mspent();let h='';
+ if(B.t>0){const p=Math.min(100,s.t/B.t*100),ov=s.t>B.t;h+=`<div class='card'><div style='display:flex;justify-content:space-between'><b>Is mahine ka budget</b><b>${m(s.t)} / ${m(B.t)}</b></div><div class='bar'><i style='width:${p}%;background:${ov?'var(--up)':'var(--ac2)'}'></i></div><small>${ov?'⚠️ Limit se '+m(s.t-B.t)+' zyada ho gaya':m(B.t-s.t)+' bacha hai'}</small></div>`}
+ C.forEach(c=>{const l=B.c[c.id],v=s[c.id]||0;if(l>0&&v>=l*.8)h+=`<div class='card' style='border-color:var(--up)'>⚠️ <b>${c.n}</b>: ${m(v)} / ${m(l)} ${v>l?'(limit paar ho gaya)':'(limit paas hai)'}</div>`});
+ if(new Date().getHours()>=18){const t=E.filter(e=>e.d===dOff(0));h+=`<div class='card'>🌙 Aaj ka hisab: <b>${m(t.filter(X).reduce((a,e)=>a+e.a,0))}</b> (${t.length} entry). Kuch likhna reh to nahi gaya?</div>`}
+ $('#bg').innerHTML=h}
+function box(t,ti){$('#ovt').textContent=ti;$('#bx').value=t;$('#ov').style.display='block';$('#bx').focus();$('#bx').select()}
+function cp(t,ti){try{navigator.clipboard.writeText(t).then(()=>toast('Copy ho gaya ✓'),()=>box(t,ti))}catch(e){box(t,ti)}}
+function share(t,ti){if(navigator.share){navigator.share({text:t}).catch(e=>{if(!e||e.name!=='AbortError')cp(t,ti)})}else cp(t,ti)}
+$('#ovc').onclick=()=>{$('#ov').style.display='none'};
+function setp(){$('#v3').innerHTML=`<h3 style='margin-top:0'>Mahine ka budget</h3><div class='card'><label>Poore mahine ka kul limit (₹)</label><input type='number' inputmode='decimal' id='bt' value='${B.t||''}' placeholder='jaise 15000'><label>Kisi cheez ka alag limit (khali = koi limit nahi)</label><div class='r2'>`+C.filter(c=>!c.loan&&!c.inc).map(c=>`<div><label>${c.e} ${c.n}</label><input type='number' inputmode='decimal' data-bc='${c.id}' value='${B.c[c.id]||''}'></div>`).join('')+`</div></div><h3>Backup (data bachao)</h3><div class='card'><small>Hafte mein ek baar backup lo aur WhatsApp ya Notes mein save kar lo. Ab tak ${E.length} entries hain.</small><button class='big' id='bk' style='margin-top:10px'>Backup lo</button><label>Backup wapas lana ho to yahan paste karo</label><textarea id='rs' rows='4'></textarea><button class='big' id='rb' style='background:var(--bd);color:var(--tx)'>Wapas lo</button></div>`}
+function restore(){let o;try{o=JSON.parse($('#rs').value.trim())}catch(e){}
+ if(!o||!Array.isArray(o.E)){toast('Ye backup sahi nahi hai');return}
+ const ids=new Set(E.map(e=>e.id));let n=0;o.E.forEach(e=>{if(e&&e.id&&!ids.has(e.id)&&CM[e.c]&&e.a>0){E.push(e);n++}});
+ if(Array.isArray(o.F)&&o.F.length)F=o.F;if(o.B){B.t=o.B.t||0;B.c=o.B.c||{}}
+ save();saveF();saveB();drawQ();setp();toast(n+' nayi entries wapas aayi ✓')}
+$('#v3').addEventListener('input',e=>{const t=e.target;if(t.id==='bt')B.t=parseFloat(t.value)||0;else if(t.dataset.bc){const v=parseFloat(t.value);if(v>0)B.c[t.dataset.bc]=v;else delete B.c[t.dataset.bc]}saveB()});
+$('#v3').addEventListener('click',e=>{if(e.target.id==='bk')share(JSON.stringify({kk:1,E:E,F:F,B:B}),'Ye poora text copy karke Notes ya WhatsApp mein save kar lo');if(e.target.id==='rb')restore()});
+$('#v2').addEventListener('click',e=>{if(e.target.closest('[data-share]'))share(RT,'Report copy karke bhejo')});
+function showTab(t){tab=t;document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',+x.dataset.t===t));[1,2,3].forEach(i=>$('#v'+i).classList.toggle('hid',t!==i));if(t===2)rep();else if(t===3)setp();else listToday();scrollTo(0,0)}
+document.querySelector('nav').onclick=e=>{const b=e.target.closest('button');if(b)showTab(+b.dataset.t)};
+document.addEventListener('click',e=>{const r=e.target.closest('.mid');if(!r||e.target.closest('.del'))return;const en=r.closest('.en'),x=en&&E.find(z=>String(z.id)===en.dataset.id);if(!x)return;
+ EID=x.id;showTab(1);$('#dt').value=x.d;pickCat(x.c);$('#it').value=x.i;$('#am').value=x.a;$('#qt').value=x.q||'';if(x.u)$('#un').value=x.u;$('#pn').value=x.p||'';
+ $('#sv').textContent='Badlav save karo';$('#eb').style.display='flex';scrollTo(0,0);toast('Badlo aur Save dabao')});
+$('#ec').onclick=()=>{EID=null;$('#sv').textContent='Save karo';$('#eb').style.display='none';['#am','#qt','#it','#pn'].forEach(s=>$(s).value='')};
+['#it','#am','#qt','#pn'].forEach(s=>$(s).addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();$('#sv').click()}}));
+pickCat('chai');drawQ();listToday();
+</script></body></html>
